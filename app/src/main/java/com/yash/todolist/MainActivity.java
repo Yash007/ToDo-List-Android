@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -41,12 +42,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
     private TaskAdapter taskAdapter;
 
     private Vibrator vibrator;
+    private ImageView noTaskFound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.taskListRecyclerView);
+        final RecyclerView recyclerView = findViewById(R.id.taskListRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
@@ -54,11 +56,21 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
         recyclerView.setAdapter(taskAdapter);
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        noTaskFound = findViewById(R.id.noTaskFoundImage);
+
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
         taskViewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
             @Override
             public void onChanged(List<Task> tasks) {
                 taskAdapter.setTasks(tasks);
+                if(taskAdapter.getItemCount() == 0) {
+                    noTaskFound.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                }
+                else    {
+                    noTaskFound.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
             }
         });
 

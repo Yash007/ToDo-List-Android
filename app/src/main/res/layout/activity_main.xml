@@ -16,7 +16,19 @@
         android:gravity="center_horizontal|top"
         tools:listitem="@layout/recyclerview_tasks"
         android:padding="8dp"
+        android:visibility="visible"
         />
+    
+    <ImageView
+        android:id="@+id/noTaskFoundImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/no_task_found"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
+        />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewListButton"
