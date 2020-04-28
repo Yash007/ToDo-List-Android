@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
 
     private FloatingActionButton addNewTaskButton;
     private TaskAdapter taskAdapter;
+
+    private Vibrator vibrator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
         taskAdapter = new TaskAdapter();
         recyclerView.setAdapter(taskAdapter);
 
-
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
         taskViewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
             @Override
@@ -66,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
             }
         });
 
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this, vibrator);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
     }

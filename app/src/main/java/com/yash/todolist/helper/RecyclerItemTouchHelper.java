@@ -1,6 +1,10 @@
 package com.yash.todolist.helper;
 
+import android.content.Context;
 import android.graphics.Canvas;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -10,14 +14,17 @@ import com.yash.todolist.adapter.TaskAdapter;
 
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     private RecyclerItemTouchHelperListener listener;
+    private Vibrator vibrator;
 
-    public RecyclerItemTouchHelper(int dragDirs, int swipeDirs, RecyclerItemTouchHelperListener listener) {
+    public RecyclerItemTouchHelper(int dragDirs, int swipeDirs, RecyclerItemTouchHelperListener listener, Vibrator vibrator) {
         super(dragDirs, swipeDirs);
         this.listener = listener;
+        this.vibrator = vibrator;
     }
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+
         return true;
     }
 
@@ -25,8 +32,13 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (viewHolder != null) {
             final View foregroundView = ((TaskAdapter.TaskHolder) viewHolder).viewForeground;
-
             getDefaultUIUtil().onSelected(foregroundView);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                //deprecated in API 26
+                vibrator.vibrate(100);
+            }
         }
     }
 
