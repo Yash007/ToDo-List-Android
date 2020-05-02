@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "e00286a9d8c669fb2faaebf1a6b2bae2",
+    "version": 3,
+    "identityHash": "e10b583cafb3d6e8acec37ea807da9e9",
     "entities": [
       {
         "tableName": "task",
@@ -32,11 +32,11 @@
       },
       {
         "tableName": "tasklist",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `task_name` TEXT NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`tid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `task_name` TEXT NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "id",
+            "columnName": "tid",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -55,7 +55,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "tid"
           ],
           "autoGenerate": true
         },
@@ -86,7 +86,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e00286a9d8c669fb2faaebf1a6b2bae2\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e10b583cafb3d6e8acec37ea807da9e9\")"
     ]
   }
 }

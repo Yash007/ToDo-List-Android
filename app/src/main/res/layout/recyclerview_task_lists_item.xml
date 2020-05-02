@@ -5,12 +5,12 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginTop="8dp"
-    android:minHeight="56dp"
+    android:minHeight="48dp"
     android:background="@drawable/gridview_card_design"
     >
 
     <RelativeLayout
-        android:id="@+id/viewBackground"
+        android:id="@+id/viewListBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorDelete">
@@ -42,29 +42,32 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/viewForeground"
+        android:id="@+id/viewListForeground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:background="@color/colorBackground"
         >
 
-        <ImageView
-            android:id="@+id/taskThumbnailRecyclerView"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+        <TextView
+            android:id="@+id/taskListNumberRecyclerView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="8dp"
-            android:src="@drawable/ic_task_white_56dp"
             android:background="@color/colorPrimary"
             android:padding="8dp"
+            android:text="1"
+            android:gravity="center"
+            android:textColor="@color/colorTextIcon"
+            android:textSize="16sp"
             android:contentDescription="@string/thumbnail"
             android:layout_alignParentStart="true"
             android:layout_marginEnd="8dp" />
 
         <TextView
-            android:id="@+id/taskTitleRecyclerview"
+            android:id="@+id/taskListTitleRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title_text"
@@ -73,27 +76,15 @@
             android:maxLines="1"
             android:textColor="@color/colorPrimaryText"
             android:gravity="center_vertical|left|start"
-            android:minHeight="56dp"
+            android:minHeight="48dp"
             android:ellipsize="end"
-            android:layout_toRightOf="@+id/taskThumbnailRecyclerView"
+            android:layout_toRightOf="@+id/taskListNumberRecyclerView"
             android:paddingLeft="8dp"
             android:paddingStart="8dp"
             />
 
-        <ImageView
-            android:id="@+id/taskStickyStarRecyclerView"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/sticky_star_selector"
-            android:padding="8dp"
-            android:contentDescription="@string/thumbnail"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp" />
         <TextView
-            android:id="@+id/taskIdRecyclerView"
+            android:id="@+id/taskListIdRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="invisible"

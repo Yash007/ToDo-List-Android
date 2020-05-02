@@ -5,22 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".TaskListActivity"
     android:background="@color/colorBackground"
     >
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taskListRecyclerView"
+        android:id="@+id/taskListItemsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal|top"
-        tools:listitem="@layout/recyclerview_tasks"
+        tools:listitem="@layout/recyclerview_task_lists_item"
         android:padding="8dp"
         android:visibility="visible"
         />
-    
+
     <ImageView
-        android:id="@+id/noTaskFoundImage"
+        android:id="@+id/noTaskListItemsFoundImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/no_task_found"
@@ -29,8 +28,9 @@
         android:visibility="invisible"
         />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addNewListButton"
+        android:id="@+id/addNewTaskListItemButton"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:src="@drawable/ic_add_white_24"

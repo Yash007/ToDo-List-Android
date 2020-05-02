@@ -2,6 +2,7 @@ package com.yash.todolist.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -14,8 +15,8 @@ import java.util.List;
 @Dao
 public interface TaskListDao {
 
-    @Query("SELECT * FROM tasklist WHERE id = :taskListId ORDER BY id ASC")
-    LiveData<List<TaskList>> findAllTasks(int taskListId);
+    @Query("SELECT * FROM tasklist where task_id= :taskId ORDER BY tid ASC")
+    LiveData<List<TaskList>> findAllTasks(int taskId);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(TaskList taskList);
@@ -23,12 +24,10 @@ public interface TaskListDao {
     @Update(onConflict = OnConflictStrategy.IGNORE)
     void update(TaskList taskList);
 
-    @Query("DELETE FROM tasklist WHERE id = :taskListId")
-    void deleteById(int taskListId);
+    @Delete
+    void delete(TaskList taskList);
 
     @Query("DELETE FROM tasklist WHERE task_id = :taskId")
     void deleteByTaskId(int taskId);
 
-    @Query("DELETE FROM tasklist")
-    void deleteAll();
 }

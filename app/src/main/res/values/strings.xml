@@ -5,6 +5,7 @@
     <string name="delete_all_tasks">Delete all</string>
     <string name="delete">Delete</string>
     <string name="launch_screen_logo">Launch screen logo</string>
-    <string name ="thumbnail">Thumbnail image</string>
+    <string name="thumbnail">Thumbnail image</string>
     <string name="title_text">Title text</string>
+    <string name="task_list_title">Enter items</string>
 </resources>

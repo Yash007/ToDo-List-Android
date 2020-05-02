@@ -22,34 +22,34 @@ import java.sql.Date;
 public class TaskList {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    public Integer id;
+    @ColumnInfo(name = "tid")
+    public int id;
 
     @ColumnInfo(name = "task_id")
-    public Integer taskId;
+    public int taskId;
 
     @ColumnInfo(name = "task_name")
     @NonNull
     public String taskName;
 
-    public TaskList( Integer taskId, String taskName) {
+    public TaskList(int taskId, String taskName) {
         this.taskId = taskId;
         this.taskName = taskName;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getTaskId() {
+    public int getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(Integer taskId) {
+    public void setTaskId(int taskId) {
         this.taskId = taskId;
     }
 

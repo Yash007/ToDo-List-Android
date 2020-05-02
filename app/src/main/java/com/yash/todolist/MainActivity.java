@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        taskAdapter = new TaskAdapter();
+        taskAdapter = new TaskAdapter(MainActivity.this);
         recyclerView.setAdapter(taskAdapter);
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
